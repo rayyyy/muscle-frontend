@@ -10,6 +10,14 @@ const routes: Routes = [
     path: 'lp',
     loadChildren: () => import('./pages/lp/lp.module').then(mod => mod.LpModule)
   },
+  {
+    path: 'mentor',
+    loadChildren: () => import('./pages/mentor/mentor.module').then(mod => mod.MentorModule)
+  },
+  {
+    path: 'mentee',
+    loadChildren: () => import('./pages/mentee/mentee.module').then(mod => mod.MenteeModule)
+  },
 ];
 
 @NgModule({
