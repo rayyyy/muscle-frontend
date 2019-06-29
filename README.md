@@ -7,6 +7,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 docker-compose up
 ```
 
+## Componentsについて(Atomic designを踏襲)
+
+|種類|説明|
+|---|---|
+| atoms | これ以上分解できない最小単位 buttonなど<br>意味を持たないもの |
+| molecules | atomsを複数まとめたもの 入力フォームなど<br>意味をもつ物もmoleculesで作る |
+| organisms | moleculesが集まったもの ヘッダーなど<br> ![organisms](https://blog.kubosho.com/images/using-atomic-design/organisms.png "organisms") |
+| pages | organismsを組み合わせて作るページ! |
+から構成される。
+
+基本的にpagesディレクトリでページを適当に作っていき  
+リファクタリング時にこの原則に沿って  
+DRYにしていく。
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
