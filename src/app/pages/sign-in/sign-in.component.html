@@ -1,1 +1,16 @@
 <h1>Sign In</h1>
+
+<div *ngIf="(user | async) || {} as user">
+  <div *ngIf="!user.uid;">
+    <!-- 認証されていない場合 -->
+    <div>
+      <input type="email" [(ngModel)]="email" placeholder="email">
+      <input type="password" [(ngModel)]="password" placeholder="password">
+      <button (click)="signUp()">Login With Email</button>
+    </div>
+  </div>
+
+  <div *ngIf="user.uid">
+    <p>すでにログインしています。uid: {{user.uid}}</p>
+  </div>
+</div>
