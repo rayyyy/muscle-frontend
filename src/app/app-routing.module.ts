@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'mentee',
     loadChildren: () => import('./pages/mentee/mentee.module').then(mod => mod.MenteeModule)
   },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/sign-in/sign-in.module').then(mod => mod.SignInModule)
+  },
 ];
 
 @NgModule({
