@@ -15,7 +15,10 @@ export class SignInComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.authService.isLoggedIn());
+    // this.authService.signOut();
+  }
 
   signUp() {
     this.authService.signUp(this.email, this.password);
