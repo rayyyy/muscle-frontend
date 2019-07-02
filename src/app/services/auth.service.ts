@@ -19,13 +19,13 @@ export class AuthService {
 
   async signUp(email: string, pass: string) {
     try {
-      const credential = await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
+      await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
       this.router.navigate(['/']);
     } catch (error) {
       if (error.code = 'auth/email-already-in-use') {
         // すでに使われている場合は、ログインに切り替える
+        await this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass);
         this.router.navigate(['/']);
-        console.log('mailaddressが登録済み');
       }
       console.log(error);
     }
