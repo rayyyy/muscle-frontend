@@ -43,6 +43,7 @@ export class AuthService {
     });
   }
 
+  // こいつの扱いをどうにかする。firebaseのuidなどを格納する用として使おうかな
   private setUser() {
     const user = { name: 'user' }
     localStorage.setItem('AUTH_USER', JSON.stringify(user));
