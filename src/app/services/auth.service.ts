@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
@@ -11,10 +10,6 @@ export class AuthService {
     private angularFireAuth: AngularFireAuth,
     private router: Router
   ) { }
-
-  isLoggedIn() {
-    return localStorage.getItem('AUTH_USER') || false;
-  }
 
   async signUp(email: string, pass: string) {
     try {
