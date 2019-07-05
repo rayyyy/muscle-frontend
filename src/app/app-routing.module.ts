@@ -30,6 +30,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/sign-up/sign-up.module').then(mod => mod.SignUpModule)
   },
   {
+    path: 'mypage',
+    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule),
+    ...canActivate(redirectUnauthorizedToLogin)
+  },
+  {
     path: '**',
     redirectTo: '/',
     pathMatch: 'full'
