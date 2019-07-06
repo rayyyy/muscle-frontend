@@ -4,13 +4,21 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   declarations: [ProfileComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    TextFieldModule
   ]
 })
 export class ProfileModule { }
