@@ -24,17 +24,17 @@ const routes: Routes = [
   {
     path: 'sign-in',
     loadChildren: () => import('./pages/sign-in/sign-in.module').then(mod => mod.SignInModule),
-    ...canActivate(redirectLoggedInToMypage)
+    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then(mod => mod.SignUpModule),
-    ...canActivate(redirectLoggedInToMypage)
+    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: 'mypage',
     loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule),
-    ...canActivate(redirectUnauthorizedToLogin)
+    // ...canActivate(redirectUnauthorizedToLogin) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: '**',
