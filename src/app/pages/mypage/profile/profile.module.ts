@@ -8,6 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
+import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -18,7 +19,8 @@ import { TextFieldModule } from '@angular/cdk/text-field';
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
-    TextFieldModule
+    TextFieldModule,
+    BreadcrumbModule
   ]
 })
 export class ProfileModule { }
