@@ -1,2 +1,17 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
+<div fxLayout="row">
+  <div fxFlex="35%" fxLayoutAlign="center center">
+    <app-avatar class="user-image"></app-avatar>
+  </div>
+  <div fxFlex="65%" fxLayout="column">
+    <div fxFlex="50%" fxLayoutAlign="start center">
+      <div class="username">tony</div>
+    </div>
+    <div fxFlex="50%" fxLayoutAlign="start center">
+      <button mat-raised-button color="primary" (click)="signOut()">プロフィールを編集</button>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
 <button mat-raised-button color="warn" (click)="signOut()">ログアウト</button>
