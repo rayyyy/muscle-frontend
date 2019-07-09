@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.sites.push(
+      { pageName: "ホーム", pageURL: "/" },
       { pageName: "マイページ", pageURL: "/mypage" },
       { pageName: "プロフィールを編集", pageURL: "/mypage/profile" }
     )
