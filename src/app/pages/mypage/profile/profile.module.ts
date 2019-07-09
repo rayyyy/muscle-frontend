@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
+import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -20,7 +21,8 @@ import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadc
     MatFormFieldModule,
     MatInputModule,
     TextFieldModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    AvatarModule
   ]
 })
 export class ProfileModule { }
