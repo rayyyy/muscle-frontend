@@ -1,0 +1,94 @@
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
+<div fxLayout="row">
+  <div fxFlex="35%" fxLayoutAlign="center center">
+    <app-avatar class="user-image"></app-avatar>
+  </div>
+  <div fxFlex="65%" fxLayout="column">
+    <div fxFlex="50%" fxLayoutAlign="start center">
+      <div class="username">tony</div>
+    </div>
+    <div fxFlex="50%" fxLayoutAlign="start center">
+      <a mat-raised-button color="primary" routerLink="/mypage/profile">プロフィールを編集</a>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row">
+  <div fxFlex="33%" fxLayoutAlign="center center" fxLayout="column">
+    <div fxFlex="70%">
+      <div class="username">30</div>
+    </div>
+    <div fxFlex="30%">
+      いいね!
+    </div>
+  </div>
+  <div fxFlex="33%" fxLayoutAlign="center center"  fxLayout="column">
+    <div fxFlex="70%">
+      <div class="username">26</div>
+    </div>
+    <div fxFlex="30%">
+      メンター数
+    </div>
+  </div>
+  <div fxFlex="33%" fxLayoutAlign="center center"  fxLayout="column">
+    <div fxFlex="70%">
+      <div class="username">5</div>
+    </div>
+    <div fxFlex="30%">
+      メンティー数
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div class="menu-container">
+  <div fxLayout="column" fxLayoutGap="35px">
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="receipt" iconDetail="契約履歴"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="attach_money" iconDetail="入出金情報"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="credit_card" iconDetail="クレジット"></app-detail-icon>
+      </div>
+    </div>
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="work" iconDetail="メンタープラン"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="account_circle" iconDetail="本人確認"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="signal_cellular_alt" iconDetail="マイデータ"></app-detail-icon>
+      </div>
+    </div>
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="notifications" iconDetail="お知らせ"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="lock_open" iconDetail="ログイン情報"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+<div fxLayout="row">
+  <div fxFlex="50%" fxLayoutAlign="center center">
+    <mat-icon inline="true" class="icon">settings</mat-icon>
+    <span>各種設定</span>
+  </div>
+  <div fxFlex="50%" fxLayoutAlign="center center">
+    <mat-icon inline="true" class="icon">help</mat-icon>
+    <span>ヘルプ</span>
+  </div>
+</div>
+
+<button mat-raised-button color="warn" (click)="signOut()">ログアウト</button>

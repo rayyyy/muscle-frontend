@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 const redirectUnauthorizedToLogin = redirectUnauthorizedTo(['sign-in']);
+const redirectLoggedInToMypage = redirectLoggedInTo(['mypage']);
 
 const routes: Routes = [
   {
@@ -11,7 +12,6 @@ const routes: Routes = [
   {
     path: 'lp',
     loadChildren: () => import('./pages/lp/lp.module').then(mod => mod.LpModule)
-    // ...canActivate(redirectUnauthorizedToLogin) 権限
   },
   {
     path: 'mentor',
@@ -23,11 +23,18 @@ const routes: Routes = [
   },
   {
     path: 'sign-in',
-    loadChildren: () => import('./pages/sign-in/sign-in.module').then(mod => mod.SignInModule)
+    loadChildren: () => import('./pages/sign-in/sign-in.module').then(mod => mod.SignInModule),
+    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./pages/sign-up/sign-up.module').then(mod => mod.SignUpModule)
+    loadChildren: () => import('./pages/sign-up/sign-up.module').then(mod => mod.SignUpModule),
+    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
+  },
+  {
+    path: 'mypage',
+    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule),
+    // ...canActivate(redirectUnauthorizedToLogin) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: '**',
