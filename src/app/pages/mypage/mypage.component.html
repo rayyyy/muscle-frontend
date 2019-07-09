@@ -8,7 +8,7 @@
       <div class="username">tony</div>
     </div>
     <div fxFlex="50%" fxLayoutAlign="start center">
-      <button mat-raised-button color="primary" (click)="signOut()">プロフィールを編集</button>
+      <a mat-raised-button color="primary" routerLink="/mypage/profile">プロフィールを編集</a>
     </div>
   </div>
 </div>
@@ -80,5 +80,15 @@
 </div>
 <mat-divider></mat-divider>
 
+<div fxLayout="row">
+  <div fxFlex="50%" fxLayoutAlign="center center">
+    <mat-icon inline="true" class="icon">settings</mat-icon>
+    <span>各種設定</span>
+  </div>
+  <div fxFlex="50%" fxLayoutAlign="center center">
+    <mat-icon inline="true" class="icon">help</mat-icon>
+    <span>ヘルプ</span>
+  </div>
+</div>
 
 <button mat-raised-button color="warn" (click)="signOut()">ログアウト</button>
