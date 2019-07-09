@@ -42,4 +42,43 @@
 </div>
 <mat-divider></mat-divider>
 
+<div class="menu-container">
+  <div fxLayout="column" fxLayoutGap="35px">
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="receipt" iconDetail="契約履歴"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="attach_money" iconDetail="入出金情報"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="credit_card" iconDetail="クレジット"></app-detail-icon>
+      </div>
+    </div>
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="work" iconDetail="メンタープラン"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="account_circle" iconDetail="本人確認"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="signal_cellular_alt" iconDetail="マイデータ"></app-detail-icon>
+      </div>
+    </div>
+    <div fxFlex="33%" fxLayout="row" fxLayoutGap="15px">
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="notifications" iconDetail="お知らせ"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+        <app-detail-icon iconName="lock_open" iconDetail="ログイン情報"></app-detail-icon>
+      </div>
+      <div fxFlex="33%" fxLayoutAlign="center center">
+      </div>
+    </div>
+  </div>
+</div>
+<mat-divider></mat-divider>
+
+
 <button mat-raised-button color="warn" (click)="signOut()">ログアウト</button>
