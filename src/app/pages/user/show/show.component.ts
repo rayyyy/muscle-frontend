@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./show.component.sass']
 })
 export class ShowComponent implements OnInit {
+  sites: Breadcrumb[] = []
+  userId: string
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
+    this.sites.push(
+      { pageName: "ホーム", pageURL: "/" },
+      { pageName: "ユーザー詳細", pageURL: `/user/${this.userId}` }
+    )
   }
 
 }
