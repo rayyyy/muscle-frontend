@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { DetailIconModule } from 'src/app/components/molecules/detail-icon/detail-icon.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DetailIconModule } from 'src/app/components/molecules/detail-icon/detai
     FlexLayoutModule,
     MatDividerModule,
     MatIconModule,
-    DetailIconModule
+    DetailIconModule,
+    RouterModule
   ]
 })
 export class MypageModule { }

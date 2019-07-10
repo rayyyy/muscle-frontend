@@ -4,6 +4,7 @@ import { MainTabComponent } from './main-tab.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [MainTabComponent],
@@ -11,7 +12,8 @@ import { MatDividerModule } from '@angular/material/divider';
     CommonModule,
     FlexLayoutModule,
     MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    RouterModule
   ],
   exports: [MainTabComponent]
 })

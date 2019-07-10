@@ -1,7 +1,7 @@
 <!-- 一旦めちゃ簡単に作った -->
 <div>
   <ng-container *ngFor="let site of sites; first as isFirst; last as isLast">
-    <a [href]="site.pageURL">
+    <a [routerLink]="site.pageURL">
       {{ site.pageName }}
     </a>
     <mat-icon *ngIf="!isLast">chevron_right</mat-icon>
