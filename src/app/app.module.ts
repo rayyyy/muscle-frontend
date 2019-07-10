@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './components/organisms/header/header.module';
-import { FooterModule } from './components/organisms/footer/footer.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { MainTabModule } from './components/organisms/main-tab/main-tab.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
     AppRoutingModule,
     BrowserAnimationsModule,
     HeaderModule,
-    FooterModule,
+    MainTabModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule
   ],
