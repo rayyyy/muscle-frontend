@@ -19,7 +19,7 @@ export class ShowComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.sites.push(
       { pageName: "ホーム", pageURL: "/" },
-      { pageName: "ユーザー詳細", pageURL: `/user/${this.userId}` }
+      { pageName: "tony", pageURL: `/user/${this.userId}` }
     )
   }
 
