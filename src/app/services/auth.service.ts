@@ -6,6 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class AuthService {
   // redirectUrl: string; // ログインしたときのページに戻ったりする時に使いたい
+
+  private httpOptions: any = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
   private host: string = 'http://localhost:4200/api';
 
   constructor(
@@ -31,7 +37,8 @@ export class AuthService {
   async signIn(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass);
-      console.log(await this.angularFireAuth.auth.currentUser.getIdToken())
+      this.setAuthorization(await this.angularFireAuth.auth.currentUser.getIdToken());
+      this.signInApi();
       this.setUser();
       this.router.navigate(['/']);
     } catch (error) {
@@ -48,15 +55,15 @@ export class AuthService {
     });
   }
 
-  public get(): Promise<any[]> {
-    return this.http.get(this.host + '/hello')
+  private async signInApi(): Promise<any[]> {
+    const user = await this.angularFireAuth.auth.currentUser;
+    const params = {
+      uid: user.uid,
+      email: user.email
+    };
+    return this.http.post(this.host + '/sign-in', params, this.httpOptions)
       .toPromise()
       .then((res) => {
-        // response の型は any ではなく class で型を定義した方が良いが
-        // ここでは簡便さから any としておく
-
-        // @angular/http では json() でパースする必要があったが､ @angular/common/http では不要となった
-        //const response: any = res.json();
         const response: any = res;
         return response;
       })
@@ -72,5 +79,10 @@ export class AuthService {
   private setUser() {
     const user = { name: 'user' }
     localStorage.setItem('AUTH_USER', JSON.stringify(user));
+  }
+
+  public setAuthorization(token: string): void {
+    const bearerToken: string = `Bearer ${token}`;
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', bearerToken);
   }
 }
