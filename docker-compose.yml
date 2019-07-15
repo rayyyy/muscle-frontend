@@ -10,3 +10,10 @@ services:
       - "4200:4200"
     volumes:
       - ./:/app
+    networks:
+      - muscle-api_default
+
+networks:
+  # muscle-api_default APIのdocker-compose時に作成されるネットワーク　なので起動するときはAPI側を先に起動しておく
+  muscle-api_default:
+    external: true
