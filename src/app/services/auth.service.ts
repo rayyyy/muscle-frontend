@@ -23,6 +23,8 @@ export class AuthService {
   async signUp(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
+      this.setAuthorization(await this.angularFireAuth.auth.currentUser.getIdToken());
+      this.signInApi();
       this.setUser();
       this.router.navigate(['/']);
     } catch (error) {
