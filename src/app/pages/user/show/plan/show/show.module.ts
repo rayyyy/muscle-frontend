@@ -6,6 +6,7 @@ import { ShowComponent } from './show.component';
 import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ShowComponent],
@@ -14,7 +15,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ShowRoutingModule,
     BreadcrumbModule,
     FlexLayoutModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ]
 })
 export class ShowModule { }
