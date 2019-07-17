@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
   // redirectUrl: string; // ログインしたときのページに戻ったりする時に使いたい
 
+  private httpOptions: any = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  private host: string = 'http://localhost:4200/api';
+
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) { }
 
   async signUp(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
+      this.setAuthorization(await this.angularFireAuth.auth.currentUser.getIdToken());
+      this.signInApi();
       this.setUser();
       this.router.navigate(['/']);
     } catch (error) {
@@ -28,6 +39,8 @@ export class AuthService {
   async signIn(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass);
+      this.setAuthorization(await this.angularFireAuth.auth.currentUser.getIdToken());
+      this.signInApi();
       this.setUser();
       this.router.navigate(['/']);
     } catch (error) {
@@ -44,9 +57,34 @@ export class AuthService {
     });
   }
 
+  private async signInApi(): Promise<any[]> {
+    const user = await this.angularFireAuth.auth.currentUser;
+    const params = {
+      uid: user.uid,
+      email: user.email
+    };
+    return this.http.post(this.host + '/sign-in', params, this.httpOptions)
+      .toPromise()
+      .then((res) => {
+        const response: any = res;
+        return response;
+      })
+      .catch(this.errorHandler);
+  }
+
+  private errorHandler(err) {
+    console.log('Error occured.', err);
+    return Promise.reject(err.message || err);
+  }
+
   // こいつの扱いをどうにかする。firebaseのuidなどを格納する用として使おうかな
   private setUser() {
     const user = { name: 'user' }
     localStorage.setItem('AUTH_USER', JSON.stringify(user));
+  }
+
+  public setAuthorization(token: string): void {
+    const bearerToken: string = `Bearer ${token}`;
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', bearerToken);
   }
 }

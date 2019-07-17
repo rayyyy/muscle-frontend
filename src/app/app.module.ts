@@ -11,6 +11,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MainTabModule } from './components/organisms/main-tab/main-tab.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MainTabModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]
