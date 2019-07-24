@@ -10,6 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
 import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
+import { MatButtonModule } from '@angular/material/button';
+import { UserService } from 'src/app/services/user/user.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -22,7 +25,10 @@ import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
     MatInputModule,
     TextFieldModule,
     BreadcrumbModule,
-    AvatarModule
-  ]
+    AvatarModule,
+    MatButtonModule,
+    FormsModule
+  ],
+  providers: [UserService]
 })
 export class ProfileModule { }

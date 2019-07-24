@@ -2,9 +2,10 @@
 <div fxLayout="row" fxLayoutAlign="center center">
   <app-avatar class="user-image"></app-avatar>
 </div>
-<div fxLayout="row" fxLayoutAlign="center center">
-  <div class="username">tony</div>
-</div>
+<mat-form-field class="full-width">
+  <input matInput placeholder="ニックネーム" value="tony">
+</mat-form-field>
+
 <mat-divider class="divider"></mat-divider>
 <div class="profile-content">
   <mat-form-field class="full-width">
@@ -12,53 +13,27 @@
     <textarea matInput
               cdkTextareaAutosize
               cdkAutosizeMinRows="1"
-              cdkAutosizeMaxRows="5">筋トレを始めようと思っています。よろしくお願いします。</textarea>
+              cdkAutosizeMaxRows="5"
+              [(ngModel)]="user_detail.short_message"></textarea>
   </mat-form-field>
 </div>
 <mat-divider class="divider"></mat-divider>
 <div class="profile-content">
   <div>・基本情報</div>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="ニックネーム" value="tony">
-  </mat-form-field>
 
   <mat-form-field class="full-width">
     <input matInput placeholder="年齢" value="23">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input matInput placeholder="身長" value="169.6">
+    <input matInput placeholder="身長" [(ngModel)]="user_detail.height">
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input matInput placeholder="体重" value="60">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="血液型" value="O">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="国籍" value="日本">
+    <input matInput placeholder="体重" [(ngModel)]="user_detail.weight">
   </mat-form-field>
 </div>
-<mat-divider class="divider"></mat-divider>
 
-<div class="profile-content">
-  <div>・生活パターン</div>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="起床時間" value="7:00">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="就寝時間" value="24:00">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="飲酒" value="週3,4程度">
-  </mat-form-field>
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="喫煙" value="吸わない">
-  </mat-form-field>
+<div class="save-button-container">
+  <button mat-raised-button color="primary" class="full-width" (click)="save()">保存する</button>
 </div>

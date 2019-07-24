@@ -1,3 +1,5 @@
+import { UserDetail } from './user-detail';
+
 export interface User {
   id: number
   uid: string
@@ -9,4 +11,5 @@ export interface User {
   birthday?: string
   created_at: string
   updated_at: string
+  user_detail?: UserDetail
 }
