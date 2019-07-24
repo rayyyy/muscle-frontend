@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { UserDetail } from 'src/app/interfaces/user-detail';
 import { UserService } from 'src/app/services/user/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ProfileComponent implements OnInit {
   sites: Breadcrumb[] = []
-  user_detail: UserDetail = {} as UserDetail
+  user: User = {} as User
 
   constructor(
     private userService: UserService
@@ -27,7 +28,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getUser(1)
       .then(
         (response) => {
-          this.user_detail = response.user_detail
+          this.user = response
         }
       )
       .catch(
@@ -36,7 +37,6 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    console.log(this.user_detail)
-    this.userService.updateProfile(1, this.user_detail)
+    this.userService.updateProfile(1, this.user)
   }
 }
