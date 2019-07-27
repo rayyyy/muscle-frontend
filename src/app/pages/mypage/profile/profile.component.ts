@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
-import { UserDetail } from 'src/app/interfaces/user-detail';
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/user';
 

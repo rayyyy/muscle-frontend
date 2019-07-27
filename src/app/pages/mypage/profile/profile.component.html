@@ -1,39 +1,46 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
-<div fxLayout="row" fxLayoutAlign="center center">
-  <app-avatar class="user-image"></app-avatar>
-</div>
-<mat-form-field class="full-width">
-  <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname">
-</mat-form-field>
 
-<mat-divider class="divider"></mat-divider>
-<div class="profile-content">
+<ng-container *ngIf="user && user.user_detail; else nodata">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-avatar class="user-image"></app-avatar>
+  </div>
   <mat-form-field class="full-width">
-    <mat-label>・ひとこと</mat-label>
-    <textarea matInput
-              cdkTextareaAutosize
-              cdkAutosizeMinRows="1"
-              cdkAutosizeMaxRows="5"
-              [(ngModel)]="user.user_detail.short_message"></textarea>
-  </mat-form-field>
-</div>
-<mat-divider class="divider"></mat-divider>
-<div class="profile-content">
-  <div>・基本情報</div>
-
-  <!-- <mat-form-field class="full-width"> -->
-    <!-- <input matInput placeholder="年齢" [(ngModel)]="user.birthday"> -->
-  <!-- </mat-form-field> -->
-
-  <mat-form-field class="full-width">
-    <input matInput placeholder="身長" [(ngModel)]="user.user_detail.height">
+    <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname">
   </mat-form-field>
 
-  <mat-form-field class="full-width">
-    <input matInput placeholder="体重" [(ngModel)]="user.user_detail.weight">
-  </mat-form-field>
-</div>
+  <mat-divider class="divider"></mat-divider>
+  <div class="profile-content">
+    <mat-form-field class="full-width">
+      <mat-label>・ひとこと</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+                [(ngModel)]="user.user_detail.short_message"></textarea>
+    </mat-form-field>
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div class="profile-content">
+    <div>・基本情報</div>
 
-<div class="save-button-container">
-  <button mat-raised-button color="primary" class="full-width" (click)="save()">保存する</button>
-</div>
+    <!-- <mat-form-field class="full-width"> -->
+      <!-- <input matInput placeholder="年齢" [(ngModel)]="user.birthday"> -->
+    <!-- </mat-form-field> -->
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="身長" [(ngModel)]="user.user_detail.height">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="体重" [(ngModel)]="user.user_detail.weight">
+    </mat-form-field>
+  </div>
+
+  <div class="save-button-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="save()">保存する</button>
+  </div>
+</ng-container>
+
+<ng-template #nodata>
+  <mat-spinner></mat-spinner>
+</ng-template>
