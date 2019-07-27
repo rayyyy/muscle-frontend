@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Injectable()
 export class UserService {
@@ -12,7 +13,8 @@ export class UserService {
   private host: string = 'http://localhost:4200/api';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService
   ) { }
 
   async getUser(user_id: number): Promise<User> {
@@ -20,6 +22,7 @@ export class UserService {
       .toPromise()
       .then((res) => {
         const response: any = res;
+        this.authService.setUser(response)
         return response;
       })
       .catch(this.errorHandler);
@@ -31,6 +34,7 @@ export class UserService {
       .toPromise()
       .then((res) => {
         const response: any = res;
+        this.authService.setUser(response)
         return response;
       })
       .catch(this.errorHandler);
