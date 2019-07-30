@@ -1,7 +1,9 @@
 <div fxLayout="column" class="container">
   <div fxFlex="90%" class="main">
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
   <div fxFlex="10%" class="tab">
     <app-main-tab></app-main-tab>
