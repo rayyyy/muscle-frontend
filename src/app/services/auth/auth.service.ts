@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
