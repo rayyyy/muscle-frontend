@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { URLInterceptor } from './services/url-interceptor';
+import { ErrorInterceptor } from './services/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,11 @@ import { URLInterceptor } from './services/url-interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     }
   ],
