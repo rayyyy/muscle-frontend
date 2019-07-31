@@ -6,7 +6,7 @@ import { User } from 'src/app/interfaces/user';
 
 @Injectable()
 export class AuthService {
-  private host: string = 'http://localhost:4200/api';
+  private host: string = '/api';
 
   constructor(
     private angularFireAuth: AngularFireAuth,

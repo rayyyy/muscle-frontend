@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.angularFireAuth.idToken.pipe(
       mergeMap((token: any) => {
-        if (token) {
+        if (req.url.match(/^\/api\//) && token) {
           req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
         }
         return next.handle(req);
