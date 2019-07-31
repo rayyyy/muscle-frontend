@@ -30,6 +30,6 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    this.userService.updateProfile(this.user.id, this.user)
+    this.userService.updateProfile(this.user.id, this.user).subscribe(user => this.user = user)
   }
 }

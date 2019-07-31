@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -12,30 +13,23 @@ export class UserService {
     private authService: AuthService
   ) { }
 
-  async getUser(user_id: number): Promise<User> {
-    return this.http.get(`/user/${user_id}`)
-      .toPromise()
-      .then((res) => {
-        const response: any = res;
-        this.authService.setUser(response)
-        return response;
-      })
-      .catch(this.errorHandler);
+  getUser(user_id: number): Observable<User> {
+    return this.http.get<User>(`/user/${user_id}`)
+      .pipe(
+        map(res => {
+          this.authService.setUser(res)
+          return res
+        })
+      )
   }
 
-  async updateProfile(user_id: number, user: User): Promise<User> {
-    return this.http.post(`/user/${user_id}`, user)
-      .toPromise()
-      .then((res) => {
-        const response: any = res;
-        this.authService.setUser(response)
-        return response;
-      })
-      .catch(this.errorHandler);
-  }
-
-  private errorHandler(err) {
-    console.log('Error occured.', err);
-    return Promise.reject(err.message || err);
+  updateProfile(user_id: number, user: User): Observable<User> {
+    return this.http.post<User>(`/user/${user_id}`, user)
+      .pipe(
+        map(res => {
+          this.authService.setUser(res)
+          return res
+        })
+      )
   }
 }
