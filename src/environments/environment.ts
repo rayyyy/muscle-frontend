@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  muscle_api_url: 'http://localhost:5000',
   firebase: {
     apiKey: "AIzaSyDyeLcBY1JcrbyFGb_wqwKFrQvWaQF2XeA",
     authDomain: "muscle-2710.firebaseapp.com",

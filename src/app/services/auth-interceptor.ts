@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.angularFireAuth.idToken.pipe(
       mergeMap((token: any) => {
+        // TODO: MUSCLE_APIのときのみにする
         if (token) {
           req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
         }

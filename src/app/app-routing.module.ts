@@ -37,8 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'mypage',
-    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule),
-    // ...canActivate(redirectUnauthorizedToLogin) // 開発時は邪魔なのでコメントアウト
+    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule), ...canActivate(redirectUnauthorizedToLogin) // 開発時は邪魔なのでコメントアウト
   },
   {
     path: '**',
