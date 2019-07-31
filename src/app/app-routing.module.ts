@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-const redirectUnauthorizedToLogin = redirectUnauthorizedTo(['sign-in']);
-const redirectLoggedInToMypage = redirectLoggedInTo(['mypage']);
+import { redirectUnauthorizedTo, redirectLoggedInTo, AngularFireAuthGuard } from '@angular/fire/auth-guard';
+const redirectLoggedInToMypage = () => redirectLoggedInTo(['mypage']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['sign-in']);
 
 const routes: Routes = [
   {
@@ -28,16 +28,20 @@ const routes: Routes = [
   {
     path: 'sign-in',
     loadChildren: () => import('./pages/sign-in/sign-in.module').then(mod => mod.SignInModule),
-    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToMypage }
   },
   {
     path: 'sign-up',
     loadChildren: () => import('./pages/sign-up/sign-up.module').then(mod => mod.SignUpModule),
-    // ...canActivate(redirectLoggedInToMypage) // 開発時は邪魔なのでコメントアウト
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectLoggedInToMypage }
   },
   {
     path: 'mypage',
-    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule), ...canActivate(redirectUnauthorizedToLogin) // 開発時は邪魔なのでコメントアウト
+    loadChildren: () => import('./pages/mypage/mypage.module').then(mod => mod.MypageModule),
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: '**',
