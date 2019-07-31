@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { URLInterceptor } from './services/url-interceptor';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,11 @@ import { AuthInterceptor } from './services/auth-interceptor';
   ],
   providers: [
     AngularFireAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: URLInterceptor,
+      multi: true,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

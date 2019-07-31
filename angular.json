@@ -64,13 +64,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "muscle-frontend:build",
-            "proxyConfig": "src/proxy.conf.js"
+            "browserTarget": "muscle-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "muscle-frontend:build:production",
-              "proxyConfig": "src/proxy.conf.js"
+              "browserTarget": "muscle-frontend:build:production"
             }
           }
         },

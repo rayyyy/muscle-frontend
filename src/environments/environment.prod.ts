@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  muscle_api_url: 'https://muscle-api.herokuapp.com',
   // TODO: 本番用の環境にする
   firebase: {
     apiKey: "AIzaSyDyeLcBY1JcrbyFGb_wqwKFrQvWaQF2XeA",

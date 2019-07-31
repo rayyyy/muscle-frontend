@@ -6,7 +6,6 @@ import { User } from 'src/app/interfaces/user';
 
 @Injectable()
 export class AuthService {
-  private host: string = '/api';
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -63,7 +62,7 @@ export class AuthService {
       email: user.email
     };
 
-    this.http.post<User>(this.host + '/sign-in', params)
+    this.http.post<User>('/sign-in', params)
       .subscribe(res => this.setUser(res))
   }
 
