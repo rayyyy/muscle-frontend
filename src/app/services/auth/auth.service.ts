@@ -63,12 +63,8 @@ export class AuthService {
     };
 
     this.http.post<User>('/sign-in', params)
-      .subscribe(res => this.setUser(res))
-  }
-
-  // TODO これをインターセプターで定義する
-  private errorHandler(err) {
-    console.log('Error occured.', err);
-    return Promise.reject(err.message || err);
+      .subscribe(res => {
+        this.setUser(res)
+      })
   }
 }
