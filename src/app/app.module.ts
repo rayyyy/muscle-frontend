@@ -16,7 +16,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { URLInterceptor } from './services/url-interceptor';
 import { ErrorInterceptor } from './services/error-interceptor';
-import { AuthService } from './services/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { AuthService } from './services/auth/auth.service';
     HttpClientModule
   ],
   providers: [
-    AuthService,
     AngularFireAuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

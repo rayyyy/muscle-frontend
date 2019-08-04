@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
+import { Observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -16,8 +18,9 @@ export class AuthService {
   async signUp(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.createUserWithEmailAndPassword(email, pass);
-      this.signInApi()
-      this.router.navigate(['/']);
+      this.signInApi().subscribe(_res => {
+        this.router.navigate(['/']);
+      })
     } catch (error) {
       if (error.code = 'auth/email-already-in-use') {
         // すでに使われている場合は、ログインに切り替える
@@ -30,17 +33,18 @@ export class AuthService {
   async signIn(email: string, pass: string) {
     try {
       await this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass);
-      this.signInApi()
-      this.router.navigate(['/']);
+      this.signInApi().subscribe(_res => {
+        this.router.navigate(['/']);
+      })
     } catch (error) {
       console.log(error);
     }
   }
 
-  async signOut() {
+  signOut() {
     this.angularFireAuth.auth.signOut().then(function () {
       localStorage.removeItem('LOGIN_USER')
-      this.router.navigate(['/'])
+      this.router.navigate(['/sign-in'])
     }.bind(this)).catch(function (error) {
       console.log(error)
     });
@@ -55,16 +59,24 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('LOGIN_USER')) || {}
   }
 
-  private signInApi() {
+  private signInApi(): Observable<User> {
     const user = this.angularFireAuth.auth.currentUser;
     const params = {
       uid: user.uid,
       email: user.email
     };
 
-    this.http.post<User>('/sign-in', params)
-      .subscribe(res => {
-        this.setUser(res)
-      })
+    return this.http.post<User>('/sign-in', params)
+      .pipe(
+        map(res => {
+          this.setUser(res)
+          return res
+        }),
+        catchError(err => {
+          // APIでのsign-inが失敗した場合はfirebaseもサインアウトさせる
+          this.signOut()
+          throw err;
+        })
+      )
   }
 }
