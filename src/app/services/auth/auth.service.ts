@@ -59,6 +59,11 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('LOGIN_USER')) || {}
   }
 
+  getUserId(): number {
+    const user: User = JSON.parse(localStorage.getItem('LOGIN_USER')) || {}
+    return user.id || 0
+  }
+
   private signInApi(): Observable<User> {
     const user = this.angularFireAuth.auth.currentUser;
     const params = {
