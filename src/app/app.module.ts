@@ -16,6 +16,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { URLInterceptor } from './services/url-interceptor';
 import { ErrorInterceptor } from './services/error-interceptor';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ErrorInterceptor } from './services/error-interceptor';
     HttpClientModule
   ],
   providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'ja-JP' },
     AngularFireAuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

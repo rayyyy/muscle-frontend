@@ -23,9 +23,17 @@
   <div class="profile-content">
     <div>・基本情報</div>
 
-    <!-- <mat-form-field class="full-width"> -->
-      <!-- <input matInput placeholder="年齢" [(ngModel)]="user.birthday"> -->
-    <!-- </mat-form-field> -->
+    <mat-form-field class="full-width">
+      <input matInput [matDatepicker]="picker" placeholder="生年月日" [(ngModel)]="user.birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <label id="example-radio-group-label">性別</label>
+    <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="user.sex">
+      <mat-radio-button value="男性">男</mat-radio-button>
+      <mat-radio-button value="女性">女</mat-radio-button>
+    </mat-radio-group>
 
     <mat-form-field class="full-width">
       <input matInput placeholder="身長" [(ngModel)]="user.user_detail.height">
