@@ -1,6 +1,6 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
-<ng-container *ngIf="user && user.user_detail; else nodata">
+<ng-container *ngIf="user | async as user; else nullUser">
   <div fxLayout="row" fxLayoutAlign="center center">
     <app-avatar class="user-image"></app-avatar>
   </div>
@@ -37,10 +37,10 @@
   </div>
 
   <div class="save-button-container">
-    <button mat-raised-button color="primary" class="full-width" (click)="save()">保存する</button>
+    <button mat-raised-button color="primary" class="full-width" (click)="save(user)">保存する</button>
   </div>
 </ng-container>
 
-<ng-template #nodata>
+<ng-template #nullUser>
   <mat-spinner></mat-spinner>
 </ng-template>

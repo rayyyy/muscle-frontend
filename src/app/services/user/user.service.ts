@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -16,7 +16,7 @@ export class UserService {
   getUser(user_id: number): Observable<User> {
     return this.http.get<User>(`/user/${user_id}`)
       .pipe(
-        map(res => {
+        tap(res => {
           this.authService.setUser(res)
           return res
         })
@@ -26,7 +26,7 @@ export class UserService {
   updateProfile(user_id: number, user: User): Observable<User> {
     return this.http.post<User>(`/user/${user_id}`, user)
       .pipe(
-        map(res => {
+        tap(res => {
           this.authService.setUser(res)
           return res
         })
