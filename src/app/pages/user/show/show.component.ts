@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ShowComponent implements OnInit {
   sites: Breadcrumb[] = []
   userId: number
-  user: Observable<User>
+  user: User
 
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +21,14 @@ export class ShowComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = parseInt(this.route.snapshot.paramMap.get('id'))
-    this.user = this.userService.getUser(this.userId)
-    this.sites.push(
-      { pageName: "ホーム", pageURL: "/" },
-      { pageName: "tony", pageURL: `/user/${this.userId}` }
-    )
+    this.userId = parseInt(this.route.snapshot.paramMap.get('user_id'))
+    this.userService.getUser(this.userId).subscribe(res => {
+      this.user = res
+      this.sites.push(
+        { pageName: 'ホーム', pageURL: '/' },
+        { pageName: this.user.nickname, pageURL: `/user/${this.userId}` }
+      )
+    })
   }
 
 }
