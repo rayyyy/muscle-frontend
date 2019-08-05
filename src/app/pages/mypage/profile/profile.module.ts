@@ -12,7 +12,6 @@ import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadc
 import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
 import { MatButtonModule } from '@angular/material/button';
 import { UserService } from 'src/app/services/user/user.service';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -38,6 +37,6 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatRadioModule
   ],
-  providers: [UserService, AuthService]
+  providers: [UserService]
 })
 export class ProfileModule { }

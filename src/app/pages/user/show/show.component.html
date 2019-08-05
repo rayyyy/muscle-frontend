@@ -1,89 +1,95 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
-<div fxLayout="column">
-  <div fxFlex="60%" fxLayoutAlign="center center">
-    <app-avatar class="user-image"></app-avatar>
+<ng-container *ngIf="user | async as user; else nullUser">
+  <div fxLayout="column">
+    <div fxFlex="60%" fxLayoutAlign="center center">
+      <app-avatar class="user-image"></app-avatar>
+    </div>
+    <div fxFlex="40%" fxLayoutAlign="center center">
+      <div class="username">tony</div>
+    </div>
   </div>
-  <div fxFlex="40%" fxLayoutAlign="center center">
-    <div class="username">tony</div>
-  </div>
-</div>
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-<div class="word">
-  8月までにシックスパック
-</div>
-<mat-divider class="divider"></mat-divider>
-
-<div class="container">
-  <div>
-    ・メンタープラン
+  <div class="word">
+    8月までにシックスパック
   </div>
-  <div>
-    <div fxLayout="row">
-      <div fxFlex="30%" fxLayoutAlign="center center">
-        <img class="plan-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo">
-      </div>
-      <div fxFlex="70%" fxLayoutAlign="center center">
-        <div>
-          2ヶ月までにシックスパックプラン
+  <mat-divider class="divider"></mat-divider>
+
+  <div class="container">
+    <div>
+      ・メンタープラン
+    </div>
+    <div>
+      <div fxLayout="row">
+        <div fxFlex="30%" fxLayoutAlign="center center">
+          <img class="plan-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo">
+        </div>
+        <div fxFlex="70%" fxLayoutAlign="center center">
+          <div>
+            2ヶ月までにシックスパックプラン
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<mat-divider class="divider"></mat-divider>
+  <mat-divider class="divider"></mat-divider>
 
-<div class="container">
-  <div>・基本情報</div>
+  <div class="container">
+    <div>・基本情報</div>
 
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">年齢:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">23</div>
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">年齢:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">23</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">身長:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">169.6</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">体重:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">60</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">血液型:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">O</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">国籍:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">日本</div>
+    </div>
   </div>
+  <mat-divider class="divider"></mat-divider>
 
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">身長:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">169.6</div>
+  <div class="container">
+    <div>・生活パターン</div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">起床時間:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">7:00</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">就寝時間:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">24:00</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">飲酒:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">週3,4程度</div>
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="30%" fxLayoutAlign="start center">喫煙:</div>
+      <div fxFlex="70%" fxLayoutAlign="start center">吸わない</div>
+    </div>
   </div>
+</ng-container>
 
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">体重:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">60</div>
-  </div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">血液型:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">O</div>
-  </div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">国籍:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">日本</div>
-  </div>
-</div>
-<mat-divider class="divider"></mat-divider>
-
-<div class="container">
-  <div>・生活パターン</div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">起床時間:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">7:00</div>
-  </div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">就寝時間:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">24:00</div>
-  </div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">飲酒:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">週3,4程度</div>
-  </div>
-
-  <div fxLayout="row">
-    <div fxFlex="30%" fxLayoutAlign="start center">喫煙:</div>
-    <div fxFlex="70%" fxLayoutAlign="start center">吸わない</div>
-  </div>
-</div>
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

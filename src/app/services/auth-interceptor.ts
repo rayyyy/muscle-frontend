@@ -13,10 +13,12 @@ export class AuthInterceptor implements HttpInterceptor {
     return from(this.handleAccess(request, next));
   }
 
-  private async handleAccess(request: HttpRequest<any>, next: HttpHandler):
+  private async handleAccess(req: HttpRequest<any>, next: HttpHandler):
     Promise<HttpEvent<any>> {
-    const token = await this.angularFireAuth.auth.currentUser.getIdToken();
-    const req = request.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
+    if (req.url.startsWith('/auth')) {
+      const token = await this.angularFireAuth.auth.currentUser.getIdToken();
+      req = req.clone({ setHeaders: { Authorization: `Bearer ${token}` } });
+    }
     return next.handle(req).toPromise()
   }
 }

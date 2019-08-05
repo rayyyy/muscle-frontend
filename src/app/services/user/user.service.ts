@@ -24,7 +24,7 @@ export class UserService {
   }
 
   updateProfile(user_id: number, user: User): Observable<User> {
-    return this.http.post<User>(`/user/${user_id}`, user)
+    return this.http.post<User>(`/auth/user/${user_id}`, user)
       .pipe(
         tap(res => {
           this.authService.setUser(res)

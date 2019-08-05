@@ -7,6 +7,8 @@ import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadc
 import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserService } from 'src/app/services/user/user.service';
 
 @NgModule({
   declarations: [ShowComponent],
@@ -16,7 +18,9 @@ import { MatDividerModule } from '@angular/material/divider';
     BreadcrumbModule,
     AvatarModule,
     FlexLayoutModule,
-    MatDividerModule
-  ]
+    MatDividerModule,
+    MatProgressSpinnerModule
+  ],
+  providers: [UserService]
 })
 export class ShowModule { }

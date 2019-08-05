@@ -71,7 +71,7 @@ export class AuthService {
       email: user.email
     };
 
-    return this.http.post<User>('/sign-in', params)
+    return this.http.post<User>('/auth/sign-in', params)
       .pipe(
         map(res => {
           this.setUser(res)
