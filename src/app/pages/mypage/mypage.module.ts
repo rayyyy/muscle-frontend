@@ -11,7 +11,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { DetailIconModule } from 'src/app/components/molecules/detail-icon/detail-icon.module';
 import { RouterModule } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
@@ -28,7 +27,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DetailIconModule,
     RouterModule,
     MatProgressSpinnerModule
-  ],
-  providers: [UserService]
+  ]
 })
 export class MypageModule { }

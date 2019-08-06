@@ -11,7 +11,6 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
 import { AvatarModule } from 'src/app/components/atoms/avatar/avatar.module';
 import { MatButtonModule } from '@angular/material/button';
-import { UserService } from 'src/app/services/user/user.service';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -36,7 +35,6 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule
-  ],
-  providers: [UserService]
+  ]
 })
 export class ProfileModule { }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/interfaces/user';
 import { Observable } from 'rxjs';
 
@@ -16,12 +15,11 @@ export class MypageComponent implements OnInit {
   user: Observable<User>
 
   constructor(
-    private authService: AuthService,
-    private userService: UserService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.user = this.userService.getUser(this.authService.getUserId())
+    this.user = this.authService.getUserApi()
     this.sites.push(
       { pageName: "ホーム", pageURL: "/" },
       { pageName: "マイページ", pageURL: "/mypage" }
