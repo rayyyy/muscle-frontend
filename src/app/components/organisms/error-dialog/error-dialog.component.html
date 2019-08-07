@@ -1,0 +1,11 @@
+<div>エラーが発生しました</div>
+<mat-divider></mat-divider>
+<div>●エラー</div>
+<div>{{ data.type }}</div>
+<div mat-dialog-content>
+  <p>
+    {{ data.message }}
+  </p>
+</div>
+
+<button mat-stroked-button color="primary" class="full-width" (click)="onNoClick()">保存する</button>
