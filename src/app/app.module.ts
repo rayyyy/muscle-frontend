@@ -18,6 +18,8 @@ import { URLInterceptor } from './services/url-interceptor';
 import { ErrorInterceptor } from './services/error-interceptor';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthService } from './services/auth/auth.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorDialogModule } from './components/organisms/error-dialog/error-dialog.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AuthService } from './services/auth/auth.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    ErrorDialogModule
   ],
   providers: [
     AuthService,
