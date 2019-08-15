@@ -3,6 +3,8 @@ import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,8 @@ export class ProfileComponent implements OnInit {
   user: Observable<User>
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -29,6 +32,10 @@ export class ProfileComponent implements OnInit {
   }
 
   save(user: User) {
-    this.authService.updateProfileApi(user).subscribe()
+    this.authService.updateProfileApi(user).pipe(
+      tap(() => {
+        this.snackBar.open('プロフィールを更新しました。');
+      })
+    ).subscribe()
   }
 }
