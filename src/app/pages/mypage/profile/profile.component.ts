@@ -29,6 +29,6 @@ export class ProfileComponent implements OnInit {
   }
 
   save(user: User) {
-    this.user = this.authService.updateProfileApi(user)
+    this.authService.updateProfileApi(user).subscribe()
   }
 }
