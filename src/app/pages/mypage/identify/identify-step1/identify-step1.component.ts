@@ -7,12 +7,12 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { tap } from "rxjs/operators";
 
 @Component({
-  selector: "app-identify",
-  templateUrl: "./identify.component.html",
-  styleUrls: ["./identify.component.sass"],
+  selector: "app-identify-step1",
+  templateUrl: "./identify-step1.component.html",
+  styleUrls: ["./identify-step1.component.sass"],
   providers: [AuthService]
 })
-export class IdentifyComponent implements OnInit {
+export class IdentifyStep1Component implements OnInit {
   sites: Breadcrumb[] = [];
   user: Observable<User>;
 
@@ -26,13 +26,13 @@ export class IdentifyComponent implements OnInit {
     this.sites.push(
       { pageName: "ホーム", pageURL: "/" },
       { pageName: "マイページ", pageURL: "/mypage" },
-      { pageName: "本人確認", pageURL: "/mypage/identify" }
+      { pageName: "プロフィールを編集", pageURL: "/mypage/identify-step1" }
     );
   }
 
   save(user: User) {
     this.authService
-      .updateIdentifyApi(user)
+      .updateIdentifyStep1Api(user)
       .pipe(
         tap(() => {
           this.snackBar.open("プロフィールを更新しました。");

@@ -1,6 +1,26 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
 <ng-container *ngIf="user | async as user; else nullUser">
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <app-avatar class="user-image"></app-avatar>
+  </div>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname" />
+  </mat-form-field>
+
+  <mat-divider class="divider"></mat-divider>
+  <div class="profile-content">
+    <mat-form-field class="full-width">
+      <mat-label>・ひとこと</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        [(ngModel)]="user.user_detail.short_message"
+      ></textarea>
+    </mat-form-field>
+  </div>
   <mat-divider class="divider"></mat-divider>
   <div class="profile-content">
     <div>・基本情報</div>
