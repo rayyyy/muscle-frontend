@@ -22,6 +22,13 @@ docker-compose up
 リファクタリング時にこの原則に沿って  
 DRYにしていく。
 
+## ページ追加のとき
+ページごとにmoduleとroutingファイルを作る（非同期読み込みのため）
+```
+npx ng g module pages/mypage/mentor --routing
+npx ng g component pages/mypage/mentor
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

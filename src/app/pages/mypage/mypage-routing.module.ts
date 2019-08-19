@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule)
   },
+  {
+    path: 'mentor',
+    loadChildren: () => import('./mentor/mentor.module').then(mod => mod.MentorModule)
+  },
 ];
 
 @NgModule({
