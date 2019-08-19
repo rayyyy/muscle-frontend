@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
+import { User } from 'src/app/interfaces/user';
+import { Observable } from 'rxjs';
+import { Mentor } from 'src/app/interfaces/mentor';
+import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
+import { tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-mentor',
@@ -8,10 +14,15 @@ import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 })
 export class MentorComponent implements OnInit {
   sites: Breadcrumb[] = []
+  user: Observable<User>
 
-  constructor() { }
+  constructor(
+    private authUserService: AuthUserService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
+    this.user = this.authUserService.getUser()
     this.sites.push(
       { pageName: 'ホーム', pageURL: '/' },
       { pageName: 'マイページ', pageURL: '/mypage' },
@@ -19,4 +30,11 @@ export class MentorComponent implements OnInit {
     )
   }
 
+  save(mentor: Mentor) {
+    this.authUserService.updateMentor(mentor).pipe(
+      tap(() => {
+        this.snackBar.open('メンタープランを更新しました。');
+      })
+    ).subscribe()
+  }
 }

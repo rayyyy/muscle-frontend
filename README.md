@@ -22,6 +22,11 @@ docker-compose up
 リファクタリング時にこの原則に沿って  
 DRYにしていく。
 
+```
+npx ng g module components/atoms/logo
+npx ng g component components/atoms/logo
+```
+
 ## ページ追加のとき
 ページごとにmoduleとroutingファイルを作る（非同期読み込みのため）
 ```
