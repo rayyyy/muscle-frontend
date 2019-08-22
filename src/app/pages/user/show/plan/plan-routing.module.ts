@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PlanComponent } from './plan.component';
 
 const routes: Routes = [
-  {
-    path: ':plan_id',
-    loadChildren: () => import('./show/show.module').then(mod => mod.ShowModule)
-  },
-  {
-    path: '**',
-    redirectTo: '/',
-    pathMatch: 'full'
-  },
+  { path: '', component: PlanComponent }
 ];
 
 @NgModule({

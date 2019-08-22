@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import { User } from "src/app/interfaces/user";
-import { Observable } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { User } from 'src/app/interfaces/user';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Mentor } from 'src/app/interfaces/mentor';
 
 @Injectable()
 export class AuthService {
@@ -89,7 +90,6 @@ export class AuthService {
       })
     );
   }
-
   // 認証済んでいるユーザーのためのものなのでauth-serviceに移す
   getUserApi(): Observable<User> {
     return this.http.get<User>(`/user/${this.getUserId()}`).pipe(
