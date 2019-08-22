@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { User } from 'src/app/interfaces/user';
-import { Observable } from 'rxjs';
 import { Mentor } from 'src/app/interfaces/mentor';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MentorPlan } from 'src/app/interfaces/mentor_plan';
 
 @Component({
   selector: 'app-mentor',
@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MentorComponent implements OnInit {
   sites: Breadcrumb[] = []
-  user: Observable<User>
+  user: User
 
   constructor(
     private authUserService: AuthUserService,
@@ -22,7 +22,9 @@ export class MentorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = this.authUserService.getUser()
+    this.authUserService.getUser().subscribe(user => {
+      this.user = user
+    })
     this.sites.push(
       { pageName: 'ホーム', pageURL: '/' },
       { pageName: 'マイページ', pageURL: '/mypage' },
@@ -33,8 +35,15 @@ export class MentorComponent implements OnInit {
   save(mentor: Mentor) {
     this.authUserService.updateMentor(mentor).pipe(
       tap(() => {
-        this.snackBar.open('メンタープランを更新しました。');
+        this.snackBar.open('メンタープランを更新しました。', '隠す', {duration: 3000})
       })
     ).subscribe()
+  }
+
+  add_plan() {
+    if (!this.user.mentor.mentor_plans) {
+      this.user.mentor.mentor_plans = []
+    }
+    this.user.mentor.mentor_plans.push({} as MentorPlan)
   }
 }

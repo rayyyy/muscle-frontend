@@ -9,5 +9,5 @@ export interface Mentor {
   image2: string
   image3: string
   image4: string
-  user_detail?: MentorPlan[]
+  mentor_plans?: MentorPlan[]
 }

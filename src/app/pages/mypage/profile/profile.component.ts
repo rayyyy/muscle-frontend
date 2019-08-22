@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
   save(user: User) {
     this.authUserService.updateProfile(user).pipe(
       tap(() => {
-        this.snackBar.open('プロフィールを更新しました。');
+        this.snackBar.open('プロフィールを更新しました。', '隠す', { duration: 3000 })
       })
     ).subscribe()
   }
