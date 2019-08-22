@@ -1,48 +1,55 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
-<div fxLayout="row" class="photo-container">
-  <div fxFlex="70%" fxLayoutAlign="center center">
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  </div>
-  <div fxFlex="30%" fxLayout="column">
-    <div fxFlex="33.3%" fxLayoutAlign="center center">
-      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    </div>
-    <div fxFlex="33.3%" fxLayoutAlign="center center">
-      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    </div>
-    <div fxFlex="33.4%" fxLayoutAlign="center center">
-      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    </div>
-  </div>
-</div>
-<mat-divider></mat-divider>
+<ng-container *ngIf="user; else nullUser">
 
-<div class="plan-title">
-  8月までにシックスパック
-</div>
-<mat-divider></mat-divider>
-<div class="plan-detail">
-  1日20分のトレーニングで、<br>
-  シックスパックを目指します
-</div>
-<mat-divider class="divider"></mat-divider>
+  <div fxLayout="row" class="photo-container">
+    <div fxFlex="70%" fxLayoutAlign="center center">
+      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    </div>
+    <div fxFlex="30%" fxLayout="column">
+      <div fxFlex="33.3%" fxLayoutAlign="center center">
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      </div>
+      <div fxFlex="33.3%" fxLayoutAlign="center center">
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      </div>
+      <div fxFlex="33.4%" fxLayoutAlign="center center">
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
 
-<div>
-  ●メンタープラン
-</div>
-<div class="plan-title">
-  週２オンライン相談プラン
-</div>
-<mat-divider></mat-divider>
-<div class="plan-detail">
-  週に2度、<br>
-  オンライン通話にて下記相談を受けます。
-  ・筋トレ
-  ・食事管理
-</div>
-<mat-divider></mat-divider>
-<div class="button-form">
-  <p>金額（税込み）：2000円</p>
-  <a mat-raised-button color="primary" class="fullwidth">申し込む</a>
-</div>
+  <div class="plan-title">
+    {{ user.mentor.title }}
+  </div>
+  <mat-divider></mat-divider>
+  <div class="plan-detail">
+    {{ user.mentor.appeal_message }}
+  </div>
+  <mat-divider class="divider"></mat-divider>
+
+  <ng-container *ngFor="let plan of user.mentor.mentor_plans; index as i">
+    <div>
+      メンタープラン{{ i + 1 }}
+    </div>
+
+    <div class="plan-title">
+      {{ plan.title }}
+    </div>
+    <mat-divider></mat-divider>
+    <div class="plan-detail">
+      {{ plan.detail }}
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="button-form">
+      <p>金額（税込み）：{{ plan.price }}円</p>
+      <a mat-raised-button color="primary" class="fullwidth">申し込む</a>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

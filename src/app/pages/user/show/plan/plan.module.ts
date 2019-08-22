@@ -7,6 +7,7 @@ import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadc
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [PlanComponent],
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     BreadcrumbModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ]
 })
 export class PlanModule { }

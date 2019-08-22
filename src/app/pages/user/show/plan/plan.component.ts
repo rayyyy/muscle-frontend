@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-plan',
@@ -9,19 +11,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlanComponent implements OnInit {
   sites: Breadcrumb[] = []
-  userId: string
+  userId: number
+  user: User
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.userId = this.route.snapshot.paramMap.get('user_id');
-    this.sites.push(
-      { pageName: "ホーム", pageURL: "/" },
-      { pageName: "tony", pageURL: `/user/${this.userId}` },
-      { pageName: "8月までにシックスパック", pageURL: `/user/${this.userId}/plan` }
-    )
+    this.userId = parseInt(this.route.snapshot.paramMap.get('user_id'))
+    this.userService.getUser(this.userId).subscribe(res => {
+      this.user = res
+      this.sites.push(
+        { pageName: 'ホーム', pageURL: '/' },
+        { pageName: this.user.nickname, pageURL: `/user/${this.userId}` },
+        { pageName: this.user.mentor.title, pageURL: `/user/${this.userId}/plan` }
+      )
+    })
   }
 
 }
