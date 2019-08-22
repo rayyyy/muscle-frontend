@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'identify',
     loadChildren: () => import('./identify/identify.module').then(mod => mod.IdentifyModule)
   },
+  {
+    path: 'mentor',
+    loadChildren: () => import('./mentor/mentor.module').then(mod => mod.MentorModule)
+  },
 ];
 
 @NgModule({

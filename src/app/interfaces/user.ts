@@ -1,4 +1,5 @@
 import { UserDetail } from './user-detail';
+import { Mentor } from './mentor';
 
 export interface User {
   id: number
@@ -12,4 +13,5 @@ export interface User {
   created_at: string
   updated_at: string
   user_detail?: UserDetail
+  mentor?: Mentor
 }

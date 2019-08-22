@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UserService } from 'src/app/services/user/user.service';
+import { FormItemTitleModule } from 'src/app/components/atoms/form-item-title/form-item-title.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ShowComponent],
@@ -19,7 +21,9 @@ import { UserService } from 'src/app/services/user/user.service';
     AvatarModule,
     FlexLayoutModule,
     MatDividerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    FormItemTitleModule,
+    RouterModule
   ],
   providers: [UserService]
 })
