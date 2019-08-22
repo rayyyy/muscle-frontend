@@ -1,6 +1,7 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
 <ng-container *ngIf="user | async as user; else nullUser">
+  <p id="title-text">申込情報</p>
   <div id="main-content" class="container">
     <h4 class="status-text">申込中</h4>
     <p>本人確認を受け付けました。 <br />審査完了までしばらくお待ちください。</p>

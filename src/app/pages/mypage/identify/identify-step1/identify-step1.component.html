@@ -1,75 +1,69 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
 <ng-container *ngIf="user | async as user; else nullUser">
-  <div fxLayout="row" fxLayoutAlign="center center">
-    <app-avatar class="user-image"></app-avatar>
-  </div>
-  <mat-form-field class="full-width">
-    <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname" />
-  </mat-form-field>
-
-  <mat-divider class="divider"></mat-divider>
-  <div class="profile-content">
+  <p id="title-text">基本情報</p>
+  <div id="main-content" class="container">
     <mat-form-field class="full-width">
-      <mat-label>・ひとこと</mat-label>
-      <textarea
-        matInput
-        cdkTextareaAutosize
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5"
-        [(ngModel)]="user.user_detail.short_message"
-      ></textarea>
+      <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />
     </mat-form-field>
-  </div>
-  <mat-divider class="divider"></mat-divider>
-  <div class="profile-content">
-    <div>・基本情報</div>
-
+    <mat-form-field class="full-width">
+      <input matInput placeholder="氏名（名）*" [(ngModel)]="user.nickname" />
+    </mat-form-field>
     <mat-form-field class="full-width">
       <input
         matInput
-        [matDatepicker]="picker"
-        placeholder="生年月日"
-        [(ngModel)]="user.birthday"
-      />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <label id="example-radio-group-label">性別</label>
-    <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      [(ngModel)]="user.sex"
-    >
-      <mat-radio-button value="男性">男</mat-radio-button>
-      <mat-radio-button value="女性">女</mat-radio-button>
-    </mat-radio-group>
-
-    <mat-form-field class="full-width">
-      <input
-        matInput
-        placeholder="身長"
-        [(ngModel)]="user.user_detail.height"
+        inputmode="katakana"
+        placeholder="氏名（セイ）*"
+        [(ngModel)]="user.nickname"
       />
     </mat-form-field>
-
     <mat-form-field class="full-width">
       <input
         matInput
-        placeholder="体重"
-        [(ngModel)]="user.user_detail.weight"
+        inputmode="katakana"
+        placeholder="氏名（メイ）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="numeric"
+        placeholder="郵便番号*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（都道府県）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（市区町村番地）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（マンション名等）"
+        [(ngModel)]="user.nickname"
       />
     </mat-form-field>
   </div>
 
-  <div class="save-button-container">
+  <div id="button-container" class="container">
     <button
       mat-raised-button
       color="primary"
       class="full-width"
       (click)="save(user)"
     >
-      保存する
+      次へ進む
     </button>
   </div>
 </ng-container>

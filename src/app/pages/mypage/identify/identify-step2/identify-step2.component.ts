@@ -26,13 +26,14 @@ export class IdentifyStep2Component implements OnInit {
     this.sites.push(
       { pageName: "ホーム", pageURL: "/" },
       { pageName: "マイページ", pageURL: "/mypage" },
-      { pageName: "プロフィールを編集", pageURL: "/mypage/identify-step2" }
+      { pageName: "本人確認", pageURL: "/mypage/identify" },
+      { pageName: "ステップ：2/2", pageURL: "/mypage/identify/step2" }
     );
   }
 
   save(user: User) {
     this.authService
-      .updateIdentifyStep2Api(user)
+      .updateIdentifyApi(user)
       .pipe(
         tap(() => {
           this.snackBar.open("プロフィールを更新しました。");
