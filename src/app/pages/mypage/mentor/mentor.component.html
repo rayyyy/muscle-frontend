@@ -1,0 +1,59 @@
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
+
+<ng-container *ngIf="user; else nullUser">
+  <app-form-item-title>タイトル</app-form-item-title>
+  <div class="form-container">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="タイトル" [(ngModel)]="user.mentor.title">
+    </mat-form-field>
+  </div>
+  <app-form-item-title>イメージ画像</app-form-item-title>
+  <div class="form-container">
+
+  </div>
+  <app-form-item-title>できること</app-form-item-title>
+  <div class="form-container">
+    <mat-form-field class="full-width">
+      <mat-label>できること</mat-label>
+      <textarea matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5"
+                [(ngModel)]="user.mentor.appeal_message"></textarea>
+    </mat-form-field>
+  </div>
+
+  <ng-container *ngFor="let plan of user.mentor.mentor_plans; index as i">
+    <app-form-item-title>メンタープラン{{ i + 1 }}</app-form-item-title>
+    <div class="form-container">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="プランタイトル" [(ngModel)]="plan.title">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>できること</mat-label>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  [(ngModel)]="plan.detail"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput type="number" placeholder="金額" [(ngModel)]="plan.price">
+      </mat-form-field>
+    </div>
+  </ng-container>
+
+  <div class="save-button-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="add_plan()">プランを増やす</button>
+  </div>
+
+  <div class="save-button-container">
+    <button mat-raised-button color="primary" class="full-width" (click)="save(user.mentor)">保存する</button>
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

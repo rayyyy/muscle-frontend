@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { User } from 'src/app/interfaces/user';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { tap } from 'rxjs/operators';
+import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.sass'],
-  providers: [AuthService]
+  providers: [AuthUserService]
 })
 export class ProfileComponent implements OnInit {
   sites: Breadcrumb[] = []
   user: Observable<User>
 
   constructor(
-    private authService: AuthService,
+    private authUserService: AuthUserService,
     private snackBar: MatSnackBar
   ) {
   }
 
   ngOnInit() {
-    this.user = this.authService.getUserApi()
+    this.user = this.authUserService.getUser()
     this.sites.push(
       { pageName: 'ホーム', pageURL: '/' },
       { pageName: 'マイページ', pageURL: '/mypage' },
@@ -32,9 +32,9 @@ export class ProfileComponent implements OnInit {
   }
 
   save(user: User) {
-    this.authService.updateProfileApi(user).pipe(
+    this.authUserService.updateProfile(user).pipe(
       tap(() => {
-        this.snackBar.open('プロフィールを更新しました。');
+        this.snackBar.open('プロフィールを更新しました。', '隠す', { duration: 3000 })
       })
     ).subscribe()
   }

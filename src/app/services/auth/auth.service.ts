@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Mentor } from 'src/app/interfaces/mentor';
 
 @Injectable()
 export class AuthService {
@@ -81,27 +82,6 @@ export class AuthService {
           // APIでのsign-inが失敗した場合はfirebaseもサインアウトさせる
           this.signOut()
           throw err;
-        })
-      )
-  }
-
-  // 認証済んでいるユーザーのためのものなのでauth-serviceに移す
-  getUserApi(): Observable<User> {
-    return this.http.get<User>(`/user/${this.getUserId()}`)
-      .pipe(
-        tap(res => {
-          this.setUser(res)
-          return res
-        })
-      )
-  }
-
-  updateProfileApi(user: User): Observable<User> {
-    return this.http.post<User>(`/auth/user/${this.getUserId()}`, user)
-      .pipe(
-        tap(res => {
-          this.setUser(res)
-          return res
         })
       )
   }

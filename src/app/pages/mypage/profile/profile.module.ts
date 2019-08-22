@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -37,6 +38,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatRadioModule,
     MatSnackBarModule
-  ]
+  ],
+  providers: [AuthUserService]
 })
 export class ProfileModule { }

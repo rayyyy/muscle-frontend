@@ -13,6 +13,7 @@ export class ShowComponent implements OnInit {
   sites: Breadcrumb[] = []
   userId: number
   user: User
+  planLink: string
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class ShowComponent implements OnInit {
 
   ngOnInit() {
     this.userId = parseInt(this.route.snapshot.paramMap.get('user_id'))
+    this.planLink = `/user/${this.userId}/plan`
     this.userService.getUser(this.userId).subscribe(res => {
       this.user = res
       this.sites.push(
