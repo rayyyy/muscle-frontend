@@ -32,7 +32,7 @@ export class IdentifyComponent implements OnInit {
 
   save(user: User) {
     this.authService
-      .updateIdentifyApi(user)
+      .updateProfileApi(user)
       .pipe(
         tap(() => {
           this.snackBar.open("プロフィールを更新しました。");

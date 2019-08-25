@@ -1,5 +1,41 @@
-<h1>新規登録</h1>
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
 
-<input type="email" [(ngModel)]="email" placeholder="email">
-<input type="password" [(ngModel)]="password" placeholder="password">
-<button (click)="signUp()">新規登録</button>
+<ng-container>
+  <div id="sign-content" class="container">
+    <p id="content-title">アカウントを作成（ステップ：1/2）</p>
+    <input
+      type="email"
+      class="input-text"
+      [(ngModel)]="email"
+      placeholder="メールアドレス"
+    /><br />
+    <input
+      type="password"
+      class="input-text"
+      [(ngModel)]="password"
+      placeholder="パスワード"
+    /><br />
+    <input
+      type="password"
+      class="input-text"
+      placeholder="パスワード（確認用）"
+    /><br />
+    <div><input type="checkbox" /><u>利用規約</u>に同意する</div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      id="main-button"
+      (click)="signUp()"
+    >
+      新規登録
+    </button>
+    <a href="http://localhost:4200/sign-in"
+      ><p>既存のアカウントでログインする</p></a
+    >
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

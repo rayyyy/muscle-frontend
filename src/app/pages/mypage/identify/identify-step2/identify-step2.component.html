@@ -1,21 +1,21 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
 <ng-container *ngIf="user | async as user; else nullUser">
-  <p id="title-text">本人確認書類区分</p>
+  <app-form-item-title>本人確認書類区分</app-form-item-title>
   <div id="main-content" class="container">
     <mat-form-field class="full-width">
       <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />
     </mat-form-field>
   </div>
 
-  <p id="title-text">運転免許証（表）</p>
+  <app-form-item-title>運転免許証（表）</app-form-item-title>
   <div id="main-content" class="container">
     <mat-form-field class="full-width">
       <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />
     </mat-form-field>
   </div>
 
-  <p id="title-text">運転免許証（裏）</p>
+  <app-form-item-title>運転免許証（裏）</app-form-item-title>
   <div id="main-content" class="container">
     <mat-form-field class="full-width">
       <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />

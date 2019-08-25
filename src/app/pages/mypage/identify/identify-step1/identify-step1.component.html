@@ -1,7 +1,7 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
 
 <ng-container *ngIf="user | async as user; else nullUser">
-  <p id="title-text">基本情報</p>
+  <app-form-item-title>基本情報</app-form-item-title>
   <div id="main-content" class="container">
     <mat-form-field class="full-width">
       <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />
