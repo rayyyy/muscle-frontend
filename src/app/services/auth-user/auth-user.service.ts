@@ -33,8 +33,12 @@ export class AuthUserService {
       )
   }
 
-  updateProfile(user: User): Observable<User> {
-    return this.http.post<User>(`/auth/user/${this.getUserId()}`, user)
+  updateProfile(user: User, icon: any): Observable<User> {
+    const params = {
+      user: user,
+      user_icon: icon
+    }
+    return this.http.post<User>(`/auth/user/${this.getUserId()}`, params)
       .pipe(
         tap(res => {
           this.setUser(res)

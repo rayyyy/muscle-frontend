@@ -1,9 +1,16 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
+<!-- 
+<div class="img-container">
+  <img #image [src]="imageSource" crossorigin>
+</div>
+<img [src]="imageDestination" class="img-preview"> -->
 
 <ng-container *ngIf="user | async as user; else nullUser">
   <div fxLayout="row" fxLayoutAlign="center center">
-    <app-avatar class="user-image"></app-avatar>
+    <app-avatar class="user-image" [src]="user.image" (click)="iconChange()"></app-avatar>
   </div>
+  <input type='file' accept="image/*" (change)="onChangeInput($event)">
+  <img [src]=imageSrc alt="" />
   <mat-form-field class="full-width">
     <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname">
   </mat-form-field>
