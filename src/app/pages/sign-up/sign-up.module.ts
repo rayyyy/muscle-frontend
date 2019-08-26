@@ -8,6 +8,8 @@ import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadc
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormItemTitleModule } from 'src/app/components/atoms/form-item-title/form-item-title.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [SignUpComponent],
@@ -20,6 +22,8 @@ import { FormItemTitleModule } from 'src/app/components/atoms/form-item-title/fo
     MatButtonModule,
     MatProgressSpinnerModule,
     FormItemTitleModule,
+    MatFormFieldModule,
+    MatInputModule,
     FormsModule
   ]
 })

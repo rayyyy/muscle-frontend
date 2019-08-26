@@ -2,24 +2,35 @@
 
 <ng-container>
   <div id="sign-content" class="container">
-    <p id="content-title">アカウントを作成（ステップ：1/2）</p>
-    <input
+    <p id="content-title">アカウントを作成</p>
+    <!-- <input
       type="email"
       class="input-text"
       [(ngModel)]="email"
       placeholder="メールアドレス"
-    /><br />
-    <input
-      type="password"
-      class="input-text"
-      [(ngModel)]="password"
-      placeholder="パスワード"
-    /><br />
-    <input
-      type="password"
-      class="input-text"
-      placeholder="パスワード（確認用）"
-    /><br />
+    /><br /> -->
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="email"
+        placeholder="メールアドレス"
+        [(ngModel)]="email"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="password"
+        placeholder="パスワード"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput inputmode="password" placeholder="パスワード（確認用）" />
+    </mat-form-field>
+
     <div><input type="checkbox" /><u>利用規約</u>に同意する</div>
 
     <button
@@ -30,7 +41,7 @@
     >
       新規登録
     </button>
-    <a href="http://localhost:4200/sign-in"
+    <a href="./sign-in"
       ><p id="login-link">既存のアカウントでログインする</p></a
     >
   </div>
