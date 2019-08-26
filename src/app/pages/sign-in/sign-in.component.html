@@ -1,18 +1,24 @@
 <ng-container>
   <div id="sign-content" class="container">
     <p id="content-title">ログイン</p>
-    <input
-      type="email"
-      class="input-text"
-      [(ngModel)]="email"
-      placeholder="メールアドレス"
-    /><br />
-    <input
-      type="password"
-      class="input-text"
-      [(ngModel)]="password"
-      placeholder="パスワード"
-    />
+
+    <mat-form-field>
+      <input
+        matInput
+        inputmode="email"
+        placeholder="メールアドレス"
+        [(ngModel)]="email"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        inputmode="password"
+        placeholder="パスワード"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
 
     <button
       mat-raised-button

@@ -4,10 +4,8 @@ import { SignUpRoutingModule } from './sign-up-routing.module';
 import { SignUpComponent } from './sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BreadcrumbModule } from 'src/app/components/molecules/breadcrumb/breadcrumb.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FormItemTitleModule } from 'src/app/components/atoms/form-item-title/form-item-title.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -18,10 +16,8 @@ import { MatInputModule } from '@angular/material/input';
     SignUpRoutingModule,
     CommonModule,
     FlexLayoutModule,
-    BreadcrumbModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    FormItemTitleModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule

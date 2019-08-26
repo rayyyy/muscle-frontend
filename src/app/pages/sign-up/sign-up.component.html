@@ -1,15 +1,8 @@
-<app-breadcrumb [sites]="sites"></app-breadcrumb>
-
 <ng-container>
   <div id="sign-content" class="container">
     <p id="content-title">アカウントを作成</p>
-    <!-- <input
-      type="email"
-      class="input-text"
-      [(ngModel)]="email"
-      placeholder="メールアドレス"
-    /><br /> -->
-    <mat-form-field class="full-width">
+
+    <mat-form-field>
       <input
         matInput
         inputmode="email"
@@ -18,7 +11,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field class="full-width">
+    <mat-form-field>
       <input
         matInput
         inputmode="password"
@@ -27,7 +20,7 @@
       />
     </mat-form-field>
 
-    <mat-form-field class="full-width">
+    <mat-form-field>
       <input matInput inputmode="password" placeholder="パスワード（確認用）" />
     </mat-form-field>
 
