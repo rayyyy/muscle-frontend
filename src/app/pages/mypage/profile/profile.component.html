@@ -1,16 +1,20 @@
 <app-breadcrumb [sites]="sites"></app-breadcrumb>
-<!-- 
-<div class="img-container">
-  <img #image [src]="imageSource" crossorigin>
-</div>
-<img [src]="imageDestination" class="img-preview"> -->
 
 <ng-container *ngIf="user | async as user; else nullUser">
   <div fxLayout="row" fxLayoutAlign="center center">
-    <app-avatar class="user-image" [src]="user.image" (click)="iconChange()"></app-avatar>
+    <label for="user_icon_upload" *ngIf="newIcon; else nullNewIcon">
+      <app-avatar class="user-image" [src]="newIcon"></app-avatar>
+    </label>
+
+
+    <ng-template #nullNewIcon>
+      <label for="user_icon_upload">
+        <app-avatar class="user-image" [src]="user.image"></app-avatar>
+      </label>
+    </ng-template>
+    <input type='file' id="user_icon_upload" accept="image/*" (change)="onChangeInput($event)" style="display:none;">
   </div>
-  <input type='file' accept="image/*" (change)="onChangeInput($event)">
-  <img [src]=imageSrc alt="" />
+
   <mat-form-field class="full-width">
     <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname">
   </mat-form-field>
@@ -59,3 +63,5 @@
 <ng-template #nullUser>
   <mat-spinner></mat-spinner>
 </ng-template>
+
+<app-image-trimming-dialog *ngIf="trimmingDialog" [src]=imageSrc (closed)="closeDialog()" (trimmed)="trimmed($event)"></app-image-trimming-dialog>

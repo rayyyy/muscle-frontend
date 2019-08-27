@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
+import { ImageTrimmingDialogModule } from 'src/app/components/molecules/image-trimming-dialog/image-trimming-dialog.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -37,7 +38,8 @@ import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ImageTrimmingDialogModule
   ],
   providers: [AuthUserService]
 })

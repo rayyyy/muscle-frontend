@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { tap } from 'rxjs/operators';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
-// import Cropper from 'cropperjs';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +15,8 @@ import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 export class ProfileComponent implements OnInit {
   sites: Breadcrumb[] = []
   user: Observable<User>
+  newIcon: string = null
+  trimmingDialog: boolean = false
 
   constructor(
     private authUserService: AuthUserService,
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
   }
 
   save(user: User) {
-    this.authUserService.updateProfile(user, this.imageSrc).pipe(
+    this.authUserService.updateProfile(user, this.newIcon).pipe(
       tap(() => {
         this.snackBar.open('プロフィールを更新しました。', '隠す', { duration: 3000 })
       })
@@ -47,31 +48,18 @@ export class ProfileComponent implements OnInit {
     const file = evt.target.files[0]
     this.reader.onload = ((e) => {
       this.imageSrc = e.target['result']
+      this.trimmingDialog = true
     })
     this.reader.readAsDataURL(file)
   }
 
-  iconChange() {
-    console.log('aaa')
+  closeDialog() {
+    console.log(false)
+    this.trimmingDialog = false
   }
 
-  // @ViewChild("image", { static: false })
-  // imageElement: ElementRef
-
-  // imageSource: string = 'favicon.ico'
-
-  // public imageDestination: string = ""
-  // private cropper: Cropper;
-
-  // public ngAfterViewInit() {
-  //   this.cropper = new Cropper(this.imageElement.nativeElement, {
-  //     zoomable: false,
-  //     scalable: false,
-  //     aspectRatio: 1,
-  //     crop: () => {
-  //       const canvas = this.cropper.getCroppedCanvas();
-  //       this.imageDestination = canvas.toDataURL("image/png");
-  //     }
-  //   });
-  // }
+  trimmed(base64) {
+    this.newIcon = base64
+    console.log(event);
+  }
 }
