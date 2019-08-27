@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { tap } from 'rxjs/operators';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
+import Compressor from 'compressorjs';
 
 @Component({
   selector: 'app-profile',
@@ -46,18 +47,30 @@ export class ProfileComponent implements OnInit {
 
   onChangeInput(evt) {
     const file = evt.target.files[0]
+
     this.reader.onload = ((e) => {
       this.imageSrc = e.target['result']
       this.trimmingDialog = true
     })
-    this.reader.readAsDataURL(file)
+
+    new Compressor(file, {
+      quality: 0.4,
+      success: result => {
+        this.reader.readAsDataURL(result)
+      },
+      error(err) {
+        console.log(err.message);
+      },
+    });
   }
 
   closeDialog() {
+    this.newIcon = null
     this.trimmingDialog = false
   }
 
   trimmed(base64) {
     this.newIcon = base64
+    this.trimmingDialog = false
   }
 }
