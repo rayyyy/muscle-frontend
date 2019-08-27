@@ -54,12 +54,10 @@ export class ProfileComponent implements OnInit {
   }
 
   closeDialog() {
-    console.log(false)
     this.trimmingDialog = false
   }
 
   trimmed(base64) {
     this.newIcon = base64
-    console.log(event);
   }
 }

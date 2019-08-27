@@ -1,4 +1,11 @@
-<a (click)="close()">close</a>
+<div fxLayout="row" class="button-container">
+  <div fxFlex="50%" fxLayoutAlign="start center" >
+    <button mat-button (click)="close()">キャンセル</button>
+  </div>
+  <div fxFlex="50%" fxLayoutAlign="end center" >
+    <button mat-button (click)="close()">使用する</button>
+  </div>
+</div>
 
 <div class="img-container">
   <img #image [src]="src" crossorigin>
