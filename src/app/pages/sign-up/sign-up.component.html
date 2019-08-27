@@ -1,5 +1,45 @@
-<h1>新規登録</h1>
+<ng-container>
+  <div id="sign-content" class="container">
+    <p id="content-title">アカウントを作成</p>
 
-<input type="email" [(ngModel)]="email" placeholder="email">
-<input type="password" [(ngModel)]="password" placeholder="password">
-<button (click)="signUp()">新規登録</button>
+    <mat-form-field>
+      <input
+        matInput
+        inputmode="email"
+        placeholder="メールアドレス"
+        [(ngModel)]="email"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="パスワード"
+        [(ngModel)]="password"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput inputmode="password" placeholder="パスワード（確認用）" />
+    </mat-form-field>
+
+    <div><input type="checkbox" /><u>利用規約</u>に同意する</div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      id="main-button"
+      (click)="signUp()"
+    >
+      新規登録
+    </button>
+    <a href="./sign-in"
+      ><p id="login-link">既存のアカウントでログインする</p></a
+    >
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

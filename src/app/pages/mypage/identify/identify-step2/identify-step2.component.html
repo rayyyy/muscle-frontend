@@ -1,0 +1,39 @@
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
+
+<ng-container *ngIf="user | async as user; else nullUser">
+  <app-form-item-title>本人確認種類</app-form-item-title>
+  <div id="main-content" class="container">
+    <mat-form-field class="full-width">
+      <mat-label>本人確認種類</mat-label>
+      <select matNativeControl required>
+        <option value="driver-license">運転免許証</option>
+        <option value="insurance-card">保険証（顔写真付き）</option>
+      </select>
+    </mat-form-field>
+  </div>
+
+  <app-form-item-title>運転免許証（表）</app-form-item-title>
+  <div class="container img-content">
+    <button class="img-button">+</button>
+  </div>
+
+  <app-form-item-title>運転免許証（裏）</app-form-item-title>
+  <div class="container img-content">
+    <button class="img-button">+</button>
+  </div>
+
+  <div id="button-container" class="container">
+    <button
+      mat-raised-button
+      color="primary"
+      class="full-width"
+      (click)="save(user)"
+    >
+      次へ進む
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -1,0 +1,24 @@
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
+
+<ng-container *ngIf="user | async as user; else nullUser">
+  <app-form-item-title>申込情報</app-form-item-title>
+  <div id="main-content" class="container">
+    <h4 class="status-text">申込中</h4>
+    <p>本人確認を受け付けました。 <br />審査完了までしばらくお待ちください。</p>
+  </div>
+
+  <div id="button-container" class="container">
+    <button
+      mat-raised-button
+      color="primary"
+      class="full-width"
+      (click)="save(user)"
+    >
+      ホーム画面に移動
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>
