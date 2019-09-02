@@ -22,10 +22,10 @@ export class AuthService {
         pass
       );
       this.signInApi().subscribe(_res => {
-        this.router.navigate(["/"]);
+        this.router.navigate(['/sign-up/step2']);
       });
     } catch (error) {
-      if ((error.code = "auth/email-already-in-use")) {
+      if ((error.code = 'auth/email-already-in-use')) {
         // すでに使われている場合は、ログインに切り替える
         this.signIn(email, pass);
       }
@@ -37,7 +37,7 @@ export class AuthService {
     try {
       await this.angularFireAuth.auth.signInWithEmailAndPassword(email, pass);
       this.signInApi().subscribe(_res => {
-        this.router.navigate(["/"]);
+        this.router.navigate(['/']);
       });
     } catch (error) {
       console.log(error);
@@ -49,8 +49,8 @@ export class AuthService {
       .signOut()
       .then(
         function() {
-          localStorage.removeItem("LOGIN_USER");
-          this.router.navigate(["/sign-in"]);
+          localStorage.removeItem('LOGIN_USER');
+          this.router.navigate(['/sign-in']);
         }.bind(this)
       )
       .catch(function(error) {
@@ -59,15 +59,15 @@ export class AuthService {
   }
 
   setUser(user: User) {
-    localStorage.setItem("LOGIN_USER", JSON.stringify(user));
+    localStorage.setItem('LOGIN_USER', JSON.stringify(user));
   }
 
   getUser(): User {
-    return JSON.parse(localStorage.getItem("LOGIN_USER")) || {};
+    return JSON.parse(localStorage.getItem('LOGIN_USER')) || {};
   }
 
   getUserId(): number {
-    const user: User = JSON.parse(localStorage.getItem("LOGIN_USER")) || {};
+    const user: User = JSON.parse(localStorage.getItem('LOGIN_USER')) || {};
     return user.id || 0;
   }
 
@@ -78,7 +78,7 @@ export class AuthService {
       email: user.email
     };
 
-    return this.http.post<User>("/auth/sign-in", params).pipe(
+    return this.http.post<User>('/auth/sign-in', params).pipe(
       tap(res => {
         this.setUser(res);
         return res;

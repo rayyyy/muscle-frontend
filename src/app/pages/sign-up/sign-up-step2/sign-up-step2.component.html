@@ -1,0 +1,28 @@
+<ng-container *ngIf="user | async as user; else nullUser">
+  <div id="sign-content" class="container">
+    <p id="content-title">アカウントを作成（ステップ:2/2）</p>
+
+    <mat-form-field>
+      <input matInput placeholder="ニックネーム" [(ngModel)]="user.nickname" />
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      [(ngModel)]="user.sex"
+    >
+      <mat-radio-button value="male" style="padding-right: 10px"
+        >男姓</mat-radio-button
+      >
+      <mat-radio-button value="female">女姓</mat-radio-button>
+    </mat-radio-group>
+
+    <button mat-raised-button color="primary" id="main-button" (click)="save()">
+      登録する
+    </button>
+    <a href="../mypage"><p id="login-link">あとで入力する</p></a>
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>
