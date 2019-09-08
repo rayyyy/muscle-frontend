@@ -37,7 +37,7 @@ export class MentorComponent implements OnInit {
   }
 
   save(mentor: Mentor) {
-    this.authUserService.updateMentor(mentor).pipe(
+    this.authUserService.updateMentor(mentor, this.newImage1, this.newImage2, this.newImage3, this.newImage4).pipe(
       tap(() => {
         this.snackBar.open('メンタープランを更新しました。', '隠す', {duration: 3000})
       })
@@ -52,22 +52,18 @@ export class MentorComponent implements OnInit {
   }
 
   getTrimmedImage1(base64) {
-    console.log(1)
     this.newImage1 = base64
   }
 
   getTrimmedImage2(base64) {
-    console.log(2)
     this.newImage2 = base64
   }
 
   getTrimmedImage3(base64) {
-    console.log(3)
     this.newImage3 = base64
   }
 
   getTrimmedImage4(base64) {
-    console.log(4)
     this.newImage4 = base64
   }
 }

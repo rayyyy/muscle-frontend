@@ -47,8 +47,15 @@ export class AuthUserService {
       )
   }
 
-  updateMentor(mentor: Mentor): Observable<User> {
-    return this.http.post<User>(`/auth/user/${this.getUserId()}/mentor-plan`, mentor)
+  updateMentor(mentor: Mentor, image1: any, image2: any, image3: any, image4: any): Observable<User> {
+    const params = {
+      mentor: mentor,
+      image1: image1,
+      image2: image2,
+      image3: image3,
+      image4: image4
+    }
+    return this.http.post<User>(`/auth/user/${this.getUserId()}/mentor-plan`, params)
       .pipe(
         tap(res => {
           this.setUser(res)
