@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Breadcrumb } from 'src/app/interfaces/breadcrumb';
 import { User } from 'src/app/interfaces/user';
 import { Observable } from 'rxjs';
@@ -15,6 +15,7 @@ import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 export class ProfileComponent implements OnInit {
   sites: Breadcrumb[] = []
   user: Observable<User>
+  newIcon: string = null
 
   constructor(
     private authUserService: AuthUserService,
@@ -32,10 +33,14 @@ export class ProfileComponent implements OnInit {
   }
 
   save(user: User) {
-    this.authUserService.updateProfile(user).pipe(
+    this.authUserService.updateProfile(user, this.newIcon).pipe(
       tap(() => {
         this.snackBar.open('プロフィールを更新しました。', '隠す', { duration: 3000 })
       })
     ).subscribe()
+  }
+
+  getTrimmedImage(base64) {
+    this.newIcon = base64
   }
 }

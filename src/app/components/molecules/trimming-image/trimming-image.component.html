@@ -1,0 +1,13 @@
+<label [for]="'user_icon_upload' + multipleNum" *ngIf="newImageSrc; else nullNewIcon">
+  <ng-content select=".newIcon"></ng-content>
+</label>
+
+<ng-template #nullNewIcon>
+  <label [for]="'user_icon_upload' + multipleNum">
+    <ng-content select=".icon"></ng-content>
+  </label>
+</ng-template>
+<input type='file' [id]="'user_icon_upload' + multipleNum" accept="image/*" (change)="onChangeInput($event)" style="display:none;">
+
+<app-image-trimming-dialog *ngIf="trimmingDialog" [src]=trimmingTargetSrc (closed)="closeDialog()" (trimmed)="trimmed($event)">
+</app-image-trimming-dialog>
