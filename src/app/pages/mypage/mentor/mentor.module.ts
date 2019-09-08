@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TrimmingImageModule } from 'src/app/components/molecules/trimming-image/trimming-image.module';
 
 @NgModule({
   declarations: [MentorComponent],
@@ -27,7 +28,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TextFieldModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    TrimmingImageModule
   ],
   providers: [AuthUserService]
 })

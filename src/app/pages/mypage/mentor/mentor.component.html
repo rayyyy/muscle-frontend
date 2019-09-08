@@ -9,7 +9,25 @@
   </div>
   <app-form-item-title>イメージ画像</app-form-item-title>
   <div class="form-container">
+    <app-trimming-image class="plan-image" [multipleNum]="1" (getTrimmedImage)="getTrimmedImage1($event)">
+      <img class="icon" [src]="user.mentor.image1" onerror="this.src='assets/add-image.png'" />
+      <img *ngIf="newImage1" class="newIcon" [src]="newImage1"/>
+    </app-trimming-image>
 
+    <app-trimming-image class="plan-image" [multipleNum]="2" (getTrimmedImage)="getTrimmedImage2($event)">
+      <img class="icon" [src]="user.mentor.image2" onerror="this.src='assets/add-image.png'" />
+      <img *ngIf="newImage2" class="newIcon" [src]="newImage2" />
+    </app-trimming-image>
+
+    <app-trimming-image class="plan-image" [multipleNum]="3" (getTrimmedImage)="getTrimmedImage3($event)">
+      <img class="icon" [src]="user.mentor.image3" onerror="this.src='assets/add-image.png'" />
+      <img *ngIf="newImage3" class="newIcon" [src]="newImage3" />
+    </app-trimming-image>
+
+    <app-trimming-image class="plan-image" [multipleNum]="4" (getTrimmedImage)="getTrimmedImage4($event)">
+      <img class="icon" [src]="user.mentor.image4" onerror="this.src='assets/add-image.png'" />
+      <img *ngIf="newImage4" class="newIcon" [src]="newImage4" />
+    </app-trimming-image>
   </div>
   <app-form-item-title>できること</app-form-item-title>
   <div class="form-container">

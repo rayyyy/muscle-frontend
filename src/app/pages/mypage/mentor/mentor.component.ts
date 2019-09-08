@@ -15,6 +15,10 @@ import { MentorPlan } from 'src/app/interfaces/mentor_plan';
 export class MentorComponent implements OnInit {
   sites: Breadcrumb[] = []
   user: User
+  newImage1: string = null
+  newImage2: string = null
+  newImage3: string = null
+  newImage4: string = null
 
   constructor(
     private authUserService: AuthUserService,
@@ -33,7 +37,7 @@ export class MentorComponent implements OnInit {
   }
 
   save(mentor: Mentor) {
-    this.authUserService.updateMentor(mentor).pipe(
+    this.authUserService.updateMentor(mentor, this.newImage1, this.newImage2, this.newImage3, this.newImage4).pipe(
       tap(() => {
         this.snackBar.open('メンタープランを更新しました。', '隠す', {duration: 3000})
       })
@@ -45,5 +49,21 @@ export class MentorComponent implements OnInit {
       this.user.mentor.mentor_plans = []
     }
     this.user.mentor.mentor_plans.push({} as MentorPlan)
+  }
+
+  getTrimmedImage1(base64) {
+    this.newImage1 = base64
+  }
+
+  getTrimmedImage2(base64) {
+    this.newImage2 = base64
+  }
+
+  getTrimmedImage3(base64) {
+    this.newImage3 = base64
+  }
+
+  getTrimmedImage4(base64) {
+    this.newImage4 = base64
   }
 }

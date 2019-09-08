@@ -4,17 +4,17 @@
 
   <div fxLayout="row" class="photo-container">
     <div fxFlex="70%" fxLayoutAlign="center center">
-      <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <img [src]="user.mentor.image1">
     </div>
     <div fxFlex="30%" fxLayout="column">
       <div fxFlex="33.3%" fxLayoutAlign="center center">
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img [src]="user.mentor.image2">
       </div>
       <div fxFlex="33.3%" fxLayoutAlign="center center">
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img [src]="user.mentor.image3">
       </div>
       <div fxFlex="33.4%" fxLayoutAlign="center center">
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <img [src]="user.mentor.image4">
       </div>
     </div>
   </div>
