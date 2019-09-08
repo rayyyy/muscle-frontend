@@ -2,9 +2,9 @@
 
 <ng-container *ngIf="user | async as user; else nullUser">
   <div fxLayout="row" fxLayoutAlign="center center">
-    <app-trimming-image class="user-image" [iconSrc]="user.image" (getTrimmedImage)="getTrimmedImage($event)">
+    <app-trimming-image class="user-image" (getTrimmedImage)="getTrimmedImage($event)">
       <app-avatar class="icon" [src]="user.image"></app-avatar>
-      <app-avatar class="newIcon" [src]="newIcon"></app-avatar>
+      <app-avatar *ngIf="newIcon" class="newIcon" [src]="newIcon"></app-avatar>
     </app-trimming-image>
   </div>
 

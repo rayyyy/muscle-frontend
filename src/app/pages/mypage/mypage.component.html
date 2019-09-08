@@ -3,7 +3,7 @@
 <ng-container *ngIf="user | async as user; else nullUser">
   <div fxLayout="row">
     <div fxFlex="35%" fxLayoutAlign="center center">
-      <app-avatar class="user-image"></app-avatar>
+      <app-avatar class="user-image" [src]="user.image"></app-avatar>
     </div>
     <div fxFlex="65%" fxLayout="column">
       <div fxFlex="50%" fxLayoutAlign="start center">

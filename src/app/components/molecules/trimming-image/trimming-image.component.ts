@@ -8,21 +8,21 @@ import Compressor from 'compressorjs';
 })
 export class TrimmingImageComponent {
   @Output() getTrimmedImage: EventEmitter<string> = new EventEmitter()
-  @Input() iconSrc: string
+  @Input() multipleNum: string
 
-  newIconSrc: string = null
+  newImageSrc: string = null
   trimmingDialog: boolean = false
 
   constructor() { }
 
-  imageSrc = '';
+  trimmingTargetSrc: any = '';
   reader = new FileReader();
 
   onChangeInput(evt) {
     const file = evt.target.files[0]
 
     this.reader.onload = ((e) => {
-      this.imageSrc = e.target['result']
+      this.trimmingTargetSrc = e.target['result']
       this.trimmingDialog = true
     })
 
@@ -38,12 +38,12 @@ export class TrimmingImageComponent {
   }
 
   closeDialog() {
-    this.newIconSrc = null
+    this.newImageSrc = null
     this.trimmingDialog = false
   }
 
   trimmed(base64) {
-    this.newIconSrc = base64
+    this.newImageSrc = base64
     this.trimmingDialog = false
     this.getTrimmedImage.emit(base64)
   }
