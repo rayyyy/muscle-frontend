@@ -16,7 +16,12 @@
       <mat-radio-button value="female">女姓</mat-radio-button>
     </mat-radio-group>
 
-    <button mat-raised-button color="primary" id="main-button" (click)="save()">
+    <button
+      mat-raised-button
+      color="primary"
+      id="main-button"
+      (click)="save(user)"
+    >
       登録する
     </button>
     <a href="../mypage"><p id="login-link">あとで入力する</p></a>

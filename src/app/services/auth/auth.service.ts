@@ -108,12 +108,4 @@ export class AuthService {
       })
     );
   }
-  updateIdentifyApi(user: User): Observable<User> {
-    return this.http.post<User>(`/auth/user/${this.getUserId()}`, user).pipe(
-      tap(res => {
-        this.setUser(res);
-        return res;
-      })
-    );
-  }
 }
