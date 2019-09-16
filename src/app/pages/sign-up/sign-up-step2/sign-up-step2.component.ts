@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthUserService } from 'src/app/services/auth-user/auth-user.service';
 import { User } from 'src/app/interfaces/user';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,24 +10,23 @@ import { Router } from '@angular/router';
   selector: 'app-sign-up-step2',
   templateUrl: './sign-up-step2.component.html',
   styleUrls: ['./sign-up-step2.component.sass'],
-  providers: [AuthService]
+  providers: [AuthUserService]
 })
 export class SignUpStep2Component implements OnInit {
   user: Observable<User>;
 
   constructor(
-    private authService: AuthService,
+    private authUserService: AuthUserService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.user = this.authService.getUserApi();
+    this.user = this.authUserService.getUser();
   }
   save(user: User) {
-    console.log('■■■■uid=' + user.uid);
-    this.authService
-      .updateProfileApi(user)
+    this.authUserService
+      .updateProfile(user)
       .pipe(
         tap(() => {
           this.snackBar.open('プロフィールを更新しました。', '隠す', {

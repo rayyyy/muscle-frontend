@@ -90,22 +90,4 @@ export class AuthService {
       })
     );
   }
-  // 認証済んでいるユーザーのためのものなのでauth-serviceに移す
-  getUserApi(): Observable<User> {
-    return this.http.get<User>(`/user/${this.getUserId()}`).pipe(
-      tap(res => {
-        this.setUser(res);
-        return res;
-      })
-    );
-  }
-
-  updateProfileApi(user: User): Observable<User> {
-    return this.http.post<User>(`/auth/user/${this.getUserId()}`, user).pipe(
-      tap(res => {
-        this.setUser(res);
-        return res;
-      })
-    );
-  }
 }
