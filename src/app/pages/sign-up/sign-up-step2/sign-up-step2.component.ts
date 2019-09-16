@@ -32,7 +32,7 @@ export class SignUpStep2Component implements OnInit {
           this.snackBar.open('プロフィールを更新しました。', '隠す', {
             duration: 3000
           });
-          // this.router.navigate(['/']);
+          this.router.navigate(['/']);
         })
       )
       .subscribe();
