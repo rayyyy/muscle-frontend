@@ -6,20 +6,28 @@ const routes: Routes = [
   { path: '', component: MypageComponent },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then(mod => mod.ProfileModule)
+    loadChildren: () =>
+      import('./profile/profile.module').then(mod => mod.ProfileModule)
   },
   {
     path: 'identify',
-    loadChildren: () => import('./identify/identify.module').then(mod => mod.IdentifyModule)
+    loadChildren: () =>
+      import('./identify/identify.module').then(mod => mod.IdentifyModule)
   },
   {
     path: 'mentor',
-    loadChildren: () => import('./mentor/mentor.module').then(mod => mod.MentorModule)
+    loadChildren: () =>
+      import('./mentor/mentor.module').then(mod => mod.MentorModule)
   },
+  {
+    path: 'money',
+    loadChildren: () =>
+      import('./money/money.module').then(mod => mod.MoneyModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MypageRoutingModule { }
+export class MypageRoutingModule {}
