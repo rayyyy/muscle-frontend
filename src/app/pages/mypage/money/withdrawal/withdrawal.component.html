@@ -1,0 +1,73 @@
+<app-breadcrumb [sites]="sites"></app-breadcrumb>
+
+<ng-container *ngIf="user | async as user; else nullUser">
+  <app-form-item-title>基本情報</app-form-item-title>
+  <div id="main-content" class="container">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="氏名（姓）*" [(ngModel)]="user.nickname" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="氏名（名）*" [(ngModel)]="user.nickname" />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="katakana"
+        placeholder="氏名（セイ）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="katakana"
+        placeholder="氏名（メイ）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        inputmode="numeric"
+        placeholder="郵便番号*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（都道府県）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（市区町村番地）*"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="住所（マンション名等）"
+        [(ngModel)]="user.nickname"
+      />
+    </mat-form-field>
+  </div>
+
+  <div id="button-container" class="container">
+    <button
+      mat-raised-button
+      color="primary"
+      class="full-width"
+      (click)="save(user)"
+    >
+      次へ進む
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #nullUser>
+  <mat-spinner></mat-spinner>
+</ng-template>
